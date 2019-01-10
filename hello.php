@@ -89,6 +89,7 @@
 	            <option value="夢羽">山﨑夢羽</option>
 	            <option value="美波">岡村美波</option>
 	            <option value="桃々姫">清野桃々姫</option>
+	            <!-- ＞ -->	 
 	            <option value="美葉">平井美葉</option>
 	            <option value="萌花">小林萌花</option>
 	            <option value="うたの">里吉うたの</option>
@@ -161,20 +162,21 @@ function multiRequest($data, $options = array()) {
 $rssList = //$data['feedurl'];
 
     array(
-        "http://rssblog.ameba.jp/angerme-amerika/rss20.xml"
-        ,"http://rssblog.ameba.jp/angerme-ayakawada/rss20.xml"
-        ,"http://rssblog.ameba.jp/angerme-ss-shin/rss20.xml"
-        ,"http://rssblog.ameba.jp/morningmusume-9ki/rss20.xml"
+        "http://rssblog.ameba.jp/morningmusume-9ki/rss20.xml"
         ,"http://rssblog.ameba.jp/morningmusume-10ki/rss20.xml"
         ,"http://rssblog.ameba.jp/mm-12ki/rss20.xml"
         ,"http://rssblog.ameba.jp/morningm-13ki/rss20.xml"
+        ,"http://rssblog.ameba.jp/angerme-amerika/rss20.xml"
+        ,"http://rssblog.ameba.jp/angerme-ayakawada/rss20.xml"
+        ,"http://rssblog.ameba.jp/angerme-ss-shin/rss20.xml"
+        ,"http://rssblog.ameba.jp/angerme-new/rss20.xml"
         ,"http://rssblog.ameba.jp/juicejuice-official/rss20.xml"
         ,"http://rssblog.ameba.jp/countrygirls/rss20.xml"
         ,"http://rssblog.ameba.jp/kobushi-factory/rss20.xml"
         ,"http://rssblog.ameba.jp/tsubaki-factory/rss20.xml"
         ,"http://rssblog.ameba.jp/beyooooonds-rfro/rss20.xml"
         ,"http://rssblog.ameba.jp/beyooooonds-chicatetsu/rss20.xml"
-        ,"http://rssblog.ameba.jp/sayumimichishige-blog/rss20.xml"
+        ,"http://rssblog.ameba.jp/beyooooonds/rss20.xml"
     );
 
 //同時呼び出し
@@ -221,11 +223,11 @@ for($n=0; $n < count($rssdataRaw); $n++){
             elseif(strpos($myTitle->title,"清野桃々姫") !== false){
                 $myCategory = "桃々姫";
             }
+            elseif(strpos($myTitle->title,"小林萌花") !== false){
+                $myCategory = "萌花";
+            }
             elseif(strpos($myLink,"angerme-ayakawada") !== false){
                 $myCategory = "彩花";
-            }
-            elseif(strpos($myLink,"sayumimichishige") !== false){
-                $myCategory = "さゆみ";
             }
 
       //連想配列($array)
@@ -254,11 +256,10 @@ $thema = array_column( $outdata,'category' );
 
 //ブログを表示
 if($_GET["thema"] == null){
-    
     if($_GET["articles"] == NULL){
       echo "<h2>24時間以内に更新された記事</h2>";
-        for($n=0;$test < 86400 ;$n++){
-            $test = $outdata[$timestamp[0]]['GNU'] - $outdata[$timestamp[$n]]['GNU'];
+        for($n=0;$test <= 86400 ;$n++){
+          $test = $_SERVER['REQUEST_TIME'] - $outdata[$timestamp[$n]]['GNU'];
             echo "<pre>";
             echo $outdata[$timestamp[$n]]['date']."　";
             echo $outdata[$timestamp[$n]]['category']."　";
@@ -267,8 +268,6 @@ if($_GET["thema"] == null){
             echo ">";
             echo $outdata[$timestamp[$n]]['title'];
             echo "</a>";
-            echo "<br />";
-            echo $outdata[$timestamp[$n]]['description'];
             echo "</pre>";
         }      
       
@@ -289,14 +288,23 @@ if($_GET["thema"] == null){
         }
     }
 }
-//↓うまくいってない部分（ソート後の表示）
-    //elseif(strstr($myCategory,$_GET["thema"]) == true){
-elseif(strstr($myCategory,$_GET["thema"]) == true){ 
-
-
-
-//↑うまくいってない部分（ソート後の表示）
-}　//if終了タグ
+else{
+  $member = $_GET["thema"];
+  echo "<h2>{$member}さんが最近更新した記事</h2>";
+          for($n=0;$n<700;$n++){
+            if($outdata[$timestamp[$n]]['category'] == $_GET["thema"]){
+            echo "<pre>";
+            echo $outdata[$timestamp[$n]]['date']."　";
+            echo $outdata[$timestamp[$n]]['category']."　";
+            echo "<a href=";
+            echo $outdata[$timestamp[$n]]['url'];
+            echo ">";
+            echo $outdata[$timestamp[$n]]['title'];
+            echo "</a>";
+            echo "</pre>";
+            }
+          }
+}      
 
 ?>
         </body>
