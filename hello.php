@@ -2,11 +2,58 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>RSSを取得してページに表示する</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>hello!blog</title>
+  
+          <!-- Bootstrap CSS-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Bootstrap JavaScript-->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
  
     <body>
-            <form action="hello.php" method="get">
+      
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <!-- 横幅が狭い時に出るハンバーガーボタン -->
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <!-- ホームへ戻るリンク。ブランドロゴなどを置く。 -->
+      <a class="navbar-brand" href="hello.php">hello!blog</a>
+    </div>
+    
+      <!-- メニュー項目 -->
+      <div id="navbar" class="collapse navbar-collapse navbar-right">
+
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">子犬</a></li>
+        <li><a href="#">子猫</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">会社情報<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">ほにゃらら</a></li>
+            <li><a href="#">ほにゃらら</a></li>
+            <li><a href="#">ほにゃらら</a></li>
+            <li><a href="#">ほにゃらら</a></li>
+          </ul>
+        </li>
+        <li><a href="#">お問い合わせ</a></li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div class="form-group row" style="display:inline-flex">
+    <div class="col-sm-1">
+            <form action="hello.php" method="get" class="form-inline">
                 <select name="articles" />
                 <option value="25">25記事</option>
                 <option value="50">50記事</option>
@@ -16,10 +63,12 @@
                 <option value="250">250記事</option>
                 <option value="300">300記事</option>
                 </select>
-                <input type="submit" value="表示"/>
-            </form>                
-                
-            <form action="hello.php" method="get">
+                <input type="submit" class="btn btn-default" value="表示"/>
+            </form>   
+    </div>
+    
+    <div class="col-sm-1">
+            <form action="hello.php" method="get" class="form-inline">
                 <select name="thema" />
 	            <!-- モーニング娘。 -->
 	            <option value="聖">譜久村聖</option>
@@ -95,8 +144,10 @@
 	            <option value="うたの">里吉うたの</option>
 	            
                 </select>
-                <input type="submit" value="ソート"/>
+                <input type="submit" class="btn btn-default" value="ソート"/>
             </form>
+      </div>
+   </div>         
         
 <?php
 function multiRequest($data, $options = array()) { 
@@ -220,10 +271,10 @@ for($n=0; $n < count($rssdataRaw); $n++){
             elseif(strpos($myTitle,"高瀬くるみ") !== false){
                 $myCategory = "くるみ";
             }
-            elseif(strpos($myTitle->title,"清野桃々姫") !== false){
+            elseif($myCategory =="姫♡"){
                 $myCategory = "桃々姫";
             }
-            elseif(strpos($myTitle->title,"小林萌花") !== false){
+            elseif($myCategory =="☘️️"){
                 $myCategory = "萌花";
             }
             elseif(strpos($myLink,"angerme-ayakawada") !== false){
@@ -263,14 +314,14 @@ if($_GET["thema"] == null){
             echo "<pre>";
             echo $outdata[$timestamp[$n]]['date']."　";
             echo $outdata[$timestamp[$n]]['category']."　";
+            echo "<br />";
             echo "<a href=";
             echo $outdata[$timestamp[$n]]['url'];
             echo ">";
             echo $outdata[$timestamp[$n]]['title'];
             echo "</a>";
             echo "</pre>";
-        }      
-      
+        }        
       
     }
     else{
@@ -295,7 +346,7 @@ else{
             if($outdata[$timestamp[$n]]['category'] == $_GET["thema"]){
             echo "<pre>";
             echo $outdata[$timestamp[$n]]['date']."　";
-            echo $outdata[$timestamp[$n]]['category']."　";
+            //echo $outdata[$timestamp[$n]]['category']."　";
             echo "<a href=";
             echo $outdata[$timestamp[$n]]['url'];
             echo ">";
