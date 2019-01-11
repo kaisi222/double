@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>hello!blog</title>
   
-          <!-- Bootstrap CSS-->
+        <!-- Bootstrap CSS-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -14,18 +14,19 @@
 </head>
  
     <body>
-      
+        
+<!-- ナビここから -->
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <!-- 横幅が狭い時に出るハンバーガーボタン -->
+      <!-- ハンバーガーメニュー -->
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
 
-      <!-- ホームへ戻るリンク。ブランドロゴなどを置く。 -->
+      <!-- リアクセス -->
       <a class="navbar-brand" href="hello.php">hello!blog</a>
     </div>
     
@@ -33,26 +34,52 @@
       <div id="navbar" class="collapse navbar-collapse navbar-right">
 
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">子犬</a></li>
-        <li><a href="#">子猫</a></li>
+        <li>
+            <a href="https://twitter.com/intent/tweet?screen_name=omanjusara" data-show-count="false">
+                お問い合わせ
+            </a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </li>
+        
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">会社情報<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">モーニング<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">ほにゃらら</a></li>
-            <li><a href="#">ほにゃらら</a></li>
-            <li><a href="#">ほにゃらら</a></li>
-            <li><a href="#">ほにゃらら</a></li>
+            <li><a href="https://ameblo.jp/morningmusume-9ki/" target="_blank">Q期</a></li>
+            <li><a href="https://ameblo.jp/morningmusume-10ki/" target="_blank">天気組</a></li>
+            <li><a href="https://ameblo.jp/mm-12ki" target="_blank">12期</a></li>
+            <li><a href="https://ameblo.jp/morningm-13ki/" target="_blank">13期14期</a></li>
           </ul>
         </li>
-        <li><a href="#">お問い合わせ</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">アンジュ<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="https://ameblo.jp/angerme-ayakawada" target="_blank">あや著</a></li>
+            <li><a href="https://ameblo.jp/angerme-amerika" target="_blank">アメリカにっき</a></li>
+            <li><a href="https://ameblo.jp/angerme-ss-shin" target="_blank">3～6期</a></li>
+            <li><a href="https://ameblo.jp/angerme-new" target="_blank">7期</a></li>
+          </ul>
+        </li>
+        <li><a href="http://ameblo.jp/juicejuice-official/" target="_blank">Juice</a></li>
+        <li><a href="http://ameblo.jp/countrygirls/" target="_blank">カントリー</a></li>
+        <li><a href="http://ameblo.jp/kobushi-factory/" target="_blank">こぶし</a></a></li>
+        <li><a href="http://ameblo.jp/tsubaki-factory/" target="_blank">つばき</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">ビヨーンズ<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="https://ameblo.jp/beyooooonds-chicatetsu/" target="_blank">CHICA#TETSU</a></li>
+            <li><a href="https://ameblo.jp/beyooooonds-rfro/" target="_blank">雨ノ森 川海</a></li>
+            <li><a href="https://ameblo.jp/beyooooonds/" target="_blank">beyooooonds</a></li>
+          </ul>
+        </li>
       </ul>
 
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<!-- ナビここまで -->
 
+<!-- ソートメニューここから -->
   <div class="form-group row" style="display:inline-flex">
-    <div class="col-sm-1">
+    <div class="col-lg-5 col-el-6">
             <form action="hello.php" method="get" class="form-inline">
                 <select name="articles" />
                 <option value="25">25記事</option>
@@ -67,10 +94,13 @@
             </form>   
     </div>
     
-    <div class="col-sm-1">
+    <div class="col-lg-8 col-el-6">
             <form action="hello.php" method="get" class="form-inline">
                 <select name="thema" />
+                <option selected>選択してください</option>
 	            <!-- モーニング娘。 -->
+	            <optgroup label="モーニング娘。'<?php echo date("y"); ?>">
+	            <option value="/m">M全メンバー</option>
 	            <option value="聖">譜久村聖</option>
 	            <option value="衣梨奈">生田衣梨奈</option>
 	            <option value="亜佑美">石田亜佑美</option>
@@ -82,7 +112,10 @@
 	            <option value="楓">加賀楓</option>
 	            <option value="玲奈">横山玲奈</option>
 	            <option value="知沙希">森戸知沙希</option>
+	            </optgroup>
 	            <!-- アンジュルム -->
+	            <optgroup label="アンジュルム">
+	            <option value="angerme">A全メンバー</option>
 	            <option value="彩花">和田彩花</option>
 	            <option value="香菜">中西香菜</option>
 	            <option value="朱莉">竹内朱莉</option>
@@ -95,7 +128,10 @@
 	            <option value="文乃">川村文乃</option>
 	            <option value="遥香">太田遥香</option>
 	            <option value="鈴蘭">伊勢鈴蘭</option>
+	            </optgroup>
 	            <!-- juice=juice -->
+	            <optgroup label="juice=juice">
+	            <option value="juice">J全メンバー</option>
 	            <option value="由加">宮崎由加</option>
 	            <option value="朋子">金澤朋子</option>
 	            <option value="紗友希">高木紗友希</option>
@@ -104,19 +140,28 @@
 	            <option value="奈々美">梁川奈々美</option>
 	            <option value="瑠々">段原瑠々</option>
 	            <option value="愛香">稲場愛香</option>
-	            <!-- カントリー・ガールズ -->
+	            </optgroup>
+	            <!-- countrygirls -->
+	            <optgroup label="countrygirls">
+	            <option value="country">C全メンバー</option>
 	            <option value="梨沙">山木梨沙</option>
 	            <option value="知沙希">森戸知沙希</option>
 	            <option value="舞">小関舞</option>
 	            <option value="奈々美">梁川奈々美</option>
 	            <option value="結">船木結</option>
+	            </optgroup>
 	            <!-- こぶしファクトリー -->
+	            <optgroup label="こぶしファクトリー">
+	            <option value="kobushi">K全メンバー</option>
 	            <option value="彩海">広瀬彩海</option>
 	            <option value="みな美">野村みな美</option>
 	            <option value="彩乃">浜浦彩乃</option>
 	            <option value="桜子">和田桜子</option>
 	            <option value="玲音">井上玲音</option>
+	            </optgroup>
 	            <!-- つばきファクトリー -->
+	            <optgroup label="つばきファクトリー">
+	            <option value="tsubaki">T全メンバー</option>
 	            <option value="理子">山岸理子</option>
 	            <option value="リサ">小片リサ</option>
 	            <option value="希空">新沼希空</option>
@@ -126,7 +171,10 @@
 	            <option value="瑞歩">小野瑞歩</option>
 	            <option value="紗栞">小野田紗栞</option>
 	            <option value="眞緒">秋山眞緒</option>
+	            </optgroup>
 	            <!-- beyooooonds -->	 
+	            <optgroup label="beyooooonds">
+	            <option value="beyooooonds">B全メンバー</option>
 	            <!-- ＞CHICA#TETSU -->	 
 	            <option value="伶奈"> 一岡伶奈</option>
 	            <option value="りか">島倉りか</option>
@@ -142,12 +190,14 @@
 	            <option value="美葉">平井美葉</option>
 	            <option value="萌花">小林萌花</option>
 	            <option value="うたの">里吉うたの</option>
+	            </optgroup>
 	            
                 </select>
                 <input type="submit" class="btn btn-default" value="ソート"/>
             </form>
       </div>
    </div>         
+<!-- ソートメニューここまで -->
         
 <?php
 function multiRequest($data, $options = array()) { 
@@ -229,6 +279,7 @@ $rssList = //$data['feedurl'];
         ,"http://rssblog.ameba.jp/beyooooonds-chicatetsu/rss20.xml"
         ,"http://rssblog.ameba.jp/beyooooonds/rss20.xml"
     );
+    
 
 //同時呼び出し
 $rssdataRaw = multiRequest($rssList);
@@ -271,10 +322,13 @@ for($n=0; $n < count($rssdataRaw); $n++){
             elseif(strpos($myTitle,"高瀬くるみ") !== false){
                 $myCategory = "くるみ";
             }
+            elseif(strpos($myTitle,"小片リサ") !== false){
+                $myCategory = "リサ";
+            }
             elseif($myCategory =="姫♡"){
                 $myCategory = "桃々姫";
             }
-            elseif($myCategory =="☘️️"){
+            elseif($myCategory =="☘️"){
                 $myCategory = "萌花";
             }
             elseif(strpos($myLink,"angerme-ayakawada") !== false){
@@ -304,11 +358,21 @@ krsort($outdata);
 $timestamp = array_column( $outdata,'GNU' );
 $thema = array_column( $outdata,'category' );
 
+$group = array( 
+        "/m" => "/m",
+        "angerme" => "angerme",
+        "juice" => "juice",
+        "country" => "country",
+        "kobushi" => "kobushi",
+        "tsubaki" => "tsubaki",
+        "beyooooonds" => "beyooooonds"
+        );
 
 //ブログを表示
 if($_GET["thema"] == null){
+    //24時間以内に更新された記事リスト
     if($_GET["articles"] == NULL){
-      echo "<h2>24時間以内に更新された記事</h2>";
+      echo "<h3>24時間以内に更新された記事</h3>";
         for($n=0;$test <= 86400 ;$n++){
           $test = $_SERVER['REQUEST_TIME'] - $outdata[$timestamp[$n]]['GNU'];
             echo "<pre>";
@@ -324,8 +388,8 @@ if($_GET["thema"] == null){
         }        
       
     }
+    //記事数を指定した記事リスト
     else{
-        //foreach($timestamp as $timestamp){
         for($n=0;$n<$_GET["articles"];$n++){
             echo "<pre>";
             echo $outdata[$timestamp[$n]]['date']."　";
@@ -339,10 +403,27 @@ if($_GET["thema"] == null){
         }
     }
 }
+//グループ名でソートした記事リスト
+elseif(in_array($_GET["thema"],$group)){
+          for($n=0;$n<1000;$n++){
+           if(strpos($outdata[$timestamp[$n]]['url'],$_GET["thema"]) !== false){
+            echo "<pre>";
+            echo $outdata[$timestamp[$n]]['date']."　";
+            echo $outdata[$timestamp[$n]]['category']."　";
+            echo "<a href=";
+            echo $outdata[$timestamp[$n]]['url'];
+            echo ">";
+            echo $outdata[$timestamp[$n]]['title'];
+            echo "</a>";
+            echo "</pre>";
+            }
+          }
+    }
+//メンバー名でソートした記事リスト
 else{
   $member = $_GET["thema"];
-  echo "<h2>{$member}さんが最近更新した記事</h2>";
-          for($n=0;$n<700;$n++){
+  echo "<h3>{$member}さんが最近更新した記事</h3>";
+          for($n=0;$n<1000;$n++){
             if($outdata[$timestamp[$n]]['category'] == $_GET["thema"]){
             echo "<pre>";
             echo $outdata[$timestamp[$n]]['date']."　";
@@ -358,6 +439,14 @@ else{
 }      
 
 ?>
+
+        <p>不具合がありましたらご連絡下さい。</p>
+        <p>
+            <a class="twitter-mention-button"
+              href="https://twitter.com/intent/tweet?screen_name=omanjusara" data-show-count="false">
+                
+            </a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </p>
         </body>
     
     
